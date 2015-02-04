@@ -4,11 +4,8 @@
  * and open the template in the editor.
  */
 package manips.ihm;
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.Vector;
-import javax.swing.GroupLayout;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import manips.Partie;
@@ -27,13 +24,19 @@ public class PartieIHM extends javax.swing.JFrame {
         partie = new Partie();
         initView();
     }
+    
+    public PartieIHM(Partie partie){
+        this.partie = partie;
+        initView();
+    }
+    
     private void initView(){
-        
         CoupPanel coupPanel = new CoupPanel(partie);
         coupPanel.setBorder(new TitledBorder("Prochaine Coup"));
         SyntaxPanel syntaxPanel = new SyntaxPanel(partie);
         syntaxPanel.setBorder(new TitledBorder("Synthèse"));
         HistoryPanel historyPanel = new HistoryPanel(partie);
+        SerialiserPanel serialiserPanel = new SerialiserPanel(partie);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -45,10 +48,12 @@ public class PartieIHM extends javax.swing.JFrame {
         c.gridx = 0;
         c.gridy = 1;
         add(syntaxPanel, c);
-        
         c.gridx = 1;
         c.gridy = 0;
         add(historyPanel, c);
+        c.gridx = 1;
+        c.gridy = 1;
+        add(serialiserPanel,c);
         setSize(800,600);
         setVisible(true);
     
@@ -113,7 +118,6 @@ public class PartieIHM extends javax.swing.JFrame {
             }
         });
     }
-    private DefaultTableModel tableModel;
     private Partie partie;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

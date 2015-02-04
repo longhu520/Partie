@@ -5,6 +5,7 @@
  */
 package manips;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -12,7 +13,7 @@ import java.util.Observable;
  *
  * @author PaulPark
  */
-public class Partie extends Observable{
+public class Partie extends Observable implements Serializable{
     private Coup coup;
     private ArrayList<Coup> choix;
     
@@ -31,6 +32,10 @@ public class Partie extends Observable{
     public void cooperer(boolean  aCoorpereA, boolean bCoorpereB){
         coup = new Coup(aCoorpereA, bCoorpereB);
         choix.add(coup);
+        reDraw();;
+    }
+    
+    public void reDraw(){
         setChanged();
         notifyObservers(this);
     }

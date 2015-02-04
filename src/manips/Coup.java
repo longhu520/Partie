@@ -5,13 +5,13 @@
  */
 package manips;
 
-import com.sun.org.apache.regexp.internal.REUtil;
+import java.io.Serializable;
 
 /**
  *
  * @author PaulPark
  */
-public class Coup {
+public class Coup implements Serializable{
     private boolean choixA;
     private boolean choixB;
     
