@@ -25,16 +25,19 @@ public class Partie extends Observable implements Serializable{
     /**
      * Ajoute un coup a la partie.
      * <br/>
-     * Assure getNbCoups( augmente de ! ; )
+     * Assure getNbCoups(augmente de 1)
      * @param aCoorpereA
      * @param bCoorpereB 
      */
     public void cooperer(boolean  aCoorpereA, boolean bCoorpereB){
         coup = new Coup(aCoorpereA, bCoorpereB);
         choix.add(coup);
-        reDraw();;
+        reDraw();
     }
     
+    /**
+     * envoyer les notifications du changement
+     */
     public void reDraw(){
         setChanged();
         notifyObservers(this);
@@ -72,6 +75,10 @@ public class Partie extends Observable implements Serializable{
         return scoreB;
     }
     
+    /**
+     * renvoie le coup en cours
+     * @return 
+     */
     public Coup getCoup(){
         return coup;
     }

@@ -79,16 +79,30 @@ public class HistoryPanel extends javax.swing.JPanel implements Observer{
     
     private class ModeleTableau extends AbstractTableModel {
 
+        /**
+         * renvoie le nb des lignes 
+         * @return 
+         */
         @Override
         public int getRowCount() {
             return partie.getList().size();
         }
 
+        /**
+         * renvoie le nb des colonnes
+         * @return 
+         */
         @Override
         public int getColumnCount() {
             return 5;
         }
 
+        /**
+         * renvoie le nom de la colonne
+         * "n", "Choix A", "Choix B", "Gain A", "Gain B"
+         * @param column
+         * @return 
+         */
         @Override
         public String getColumnName(int column) {
             String res;
@@ -114,6 +128,12 @@ public class HistoryPanel extends javax.swing.JPanel implements Observer{
             return res;
         }
 
+        /**
+         * renvoie le contenu de tableau
+         * @param rowIndex
+         * @param columnIndex
+         * @return 
+         */
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             Object result;
